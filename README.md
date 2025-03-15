@@ -35,11 +35,11 @@ This is a simplified version of [Google's original React implementation](https:/
    git clone https://github.com/ViaAnthroposBenevolentia/gemini-2-live-api-demo.git
    ```
 
-3. Start the development server (adjust port if needed):
+3. Start the Node.js server:
 
    ```bash
    cd gemini-2-live-api-demo
-   python -m http.server 8000 # or npx http-server 8000 or Open with Live Server extension for VS Code
+   npm start
    ```
 
 4. Access the application at `http://localhost:8000`
