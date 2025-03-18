@@ -1,6 +1,6 @@
-export const getWebsocketUrl = () => {
+export const getApiUrl = () => {
     const apiKey = localStorage.getItem('apiKey');
-    return `wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent?key=${apiKey}`;
+    return `https://generativelanguage.googleapis.com/v1/models/gemini-pro-vision:generateContent?key=${apiKey}`;
 };
 
 
@@ -12,15 +12,16 @@ const thresholds = {
 }
 
 export const getConfig = () => ({
-    model: 'models/gemini-2.0-flash-exp',
+    model: 'gemini-2.0-flash-exp-image-generation',
     generationConfig: {
-        temperature: parseFloat(localStorage.getItem('temperature')) || 1.8,
+        temperature: parseFloat(localStorage.getItem('temperature')) || 1.0,
         top_p: parseFloat(localStorage.getItem('top_p')) || 0.95,
-        top_k: parseInt(localStorage.getItem('top_k')) || 65,
-        maxOutputTokens: parseInt(localStorage.getItem('maxOutputTokens')) || 2048,
+        top_k: parseInt(localStorage.getItem('top_k')) || 40,
+        maxOutputTokens: parseInt(localStorage.getItem('maxOutputTokens')) || 8192,
         candidateCount: 1,
         stopSequences: [],
-        responseModalities: ['Text', 'Image']
+        responseModalities: ['Text', 'Image'],
+        responseMimeType: "text/plain"
     },
     systemInstruction: {
         parts: [{
